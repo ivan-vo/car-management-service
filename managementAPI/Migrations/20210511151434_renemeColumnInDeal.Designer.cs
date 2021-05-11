@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace managementAPI.Migrations
 {
     [DbContext(typeof(CarManagementContex))]
-    partial class CarManagementContexModelSnapshot : ModelSnapshot
+    [Migration("20210511151434_renemeColumnInDeal")]
+    partial class renemeColumnInDeal
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,6 +27,10 @@ namespace managementAPI.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("id")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int?>("Dealid")
+                        .HasColumnType("integer")
+                        .HasColumnName("dealid");
 
                     b.Property<string>("brand")
                         .HasColumnType("text")
@@ -45,6 +51,9 @@ namespace managementAPI.Migrations
                     b.HasKey("id")
                         .HasName("pk_cars");
 
+                    b.HasIndex("Dealid")
+                        .HasDatabaseName("ix_cars_dealid");
+
                     b.ToTable("cars");
                 });
 
@@ -56,26 +65,12 @@ namespace managementAPI.Migrations
                         .HasColumnName("id")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int?>("car_id")
-                        .HasColumnType("integer")
-                        .HasColumnName("car_id");
-
-                    b.Property<int?>("manager_id")
-                        .HasColumnType("integer")
-                        .HasColumnName("manager_id");
-
                     b.Property<DateTime?>("name")
                         .HasColumnType("timestamp without time zone")
                         .HasColumnName("name");
 
                     b.HasKey("id")
                         .HasName("pk_deal");
-
-                    b.HasIndex("car_id")
-                        .HasDatabaseName("ix_deal_car_id");
-
-                    b.HasIndex("manager_id")
-                        .HasDatabaseName("ix_deal_manager_id");
 
                     b.ToTable("deal");
                 });
@@ -87,6 +82,10 @@ namespace managementAPI.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("id")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int?>("Dealid")
+                        .HasColumnType("integer")
+                        .HasColumnName("dealid");
 
                     b.Property<DateTime>("date_recruitment")
                         .HasColumnType("timestamp without time zone")
@@ -115,21 +114,30 @@ namespace managementAPI.Migrations
                     b.HasKey("id")
                         .HasName("pk_managers");
 
+                    b.HasIndex("Dealid")
+                        .HasDatabaseName("ix_managers_dealid");
+
                     b.ToTable("managers");
+                });
+
+            modelBuilder.Entity("Car", b =>
+                {
+                    b.HasOne("Deal", null)
+                        .WithMany("car_")
+                        .HasForeignKey("Dealid")
+                        .HasConstraintName("fk_cars_deal_dealid");
+                });
+
+            modelBuilder.Entity("Manager", b =>
+                {
+                    b.HasOne("Deal", null)
+                        .WithMany("manager_")
+                        .HasForeignKey("Dealid")
+                        .HasConstraintName("fk_managers_deal_dealid");
                 });
 
             modelBuilder.Entity("Deal", b =>
                 {
-                    b.HasOne("Car", "car_")
-                        .WithMany()
-                        .HasForeignKey("car_id")
-                        .HasConstraintName("fk_deal_cars_car_id");
-
-                    b.HasOne("Manager", "manager_")
-                        .WithMany()
-                        .HasForeignKey("manager_id")
-                        .HasConstraintName("fk_deal_managers_manager_id");
-
                     b.Navigation("car_");
 
                     b.Navigation("manager_");
