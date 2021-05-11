@@ -1,6 +1,6 @@
 using System;
 
-namespace managementAPI
+namespace ManagementAPI
 {
     public class WeatherForecast
     {
