@@ -16,11 +16,12 @@ namespace managementAPI.Controllers
         {
             this.service = service;
         }
-        [HttpPost("/cars")]
-        public void CreateCar(Car car)
-        {
-            service.CreateNewCar(car);
-        }
 
+        [HttpPost("/cars")]
+        public ActionResult<IEnumerable<Car>> CreateCar(Car car)
+        {
+            Car newCar = service.CreateNewCar(car);
+            return Created($"/cars/{newCar.id}", newCar);
+        }
     }
 }

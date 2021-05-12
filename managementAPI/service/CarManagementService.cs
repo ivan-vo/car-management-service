@@ -15,16 +15,11 @@ namespace managementAPI
         {
             this._context = context;
         }
-
-        public int GetONE()
-        {
-            return 1;
-        }
-
-        public void CreateNewCar(Car car)
+        public Car CreateNewCar(Car car)
         {
             _context.Add(car);
             _context.SaveChanges();
+            return car;
         }
     }
 }
