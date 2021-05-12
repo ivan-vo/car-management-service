@@ -28,7 +28,7 @@ namespace managementAPI
             return manager;
         }
 
-        public List<Manager> GetMagers()
+        public List<Manager> GetManagers()
         {
             return _context.managers.ToList();
         }
@@ -37,12 +37,23 @@ namespace managementAPI
             return _context.cars.ToList();
         }
 
-        public Deal CreateNewDeal(DateTime date, Manager manager, Car car)
+        public Deal CreateNewDeal(DateTime date, int managerId, int carId)
         {
+            Console.WriteLine(GetCar(carId));
+            Car car = GetCar(carId);
+            Manager manager = GetManager(managerId);
             Deal deal = new Deal() { date = date, car_ = car, manager_ = manager };
             _context.deals.Add(deal);
             _context.SaveChanges();
             return deal;
+        }
+        private Car GetCar(int id)
+        {
+            return _context.cars.Find(id);
+        }
+        private Manager GetManager(int id)
+        {
+            return _context.managers.Find(id);
         }
     }
 }

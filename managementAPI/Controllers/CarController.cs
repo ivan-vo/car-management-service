@@ -20,7 +20,7 @@ namespace managementAPI.Controllers
         [HttpGet("/managers")]
         public ActionResult<IEnumerable<Manager>> GetManagers()
         {
-            return Ok(service.GetMagers());
+            return Ok(service.GetManagers());
         }
         [HttpGet("/cars")]
         public ActionResult<IEnumerable<Manager>> GetCars()
@@ -44,7 +44,8 @@ namespace managementAPI.Controllers
         [HttpPost("/deals")]
         public ActionResult<IEnumerable<Deal>> CreateDeal(DealDateManagerCatrDTO dto)
         {
-            Deal newDeal = service.CreateNewDeal(dto.date, dto.manager, dto.car);
+            Console.WriteLine(dto.date);
+            Deal newDeal = service.CreateNewDeal(dto.date, dto.managerId, dto.carId);
             return Created($"/cars/{newDeal.id}", newDeal);
         }
     }
