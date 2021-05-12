@@ -7,6 +7,7 @@ import { loadManagers } from '../store/actions/deals-actions';
 export default function DealsForm() {
     const onSubmitHandler = (event) => {
         event.preventDefault();
+        console.log(manager.value)
     }
 
     function useTextField(init, name) {
@@ -21,17 +22,18 @@ export default function DealsForm() {
         dispatch(loadManagers())
     }, [])
     const dispatch = useDispatch();
-    const managers = useSelector(state => state.managers);
+    const managers = useSelector(state => state.managers.managers);
     console.log(managers);
     const date = useTextField("","date");
+    const manager = useTextField("", "manager")
     return (
         <div>
-            <form onSubmit={onSubmitHandler}>
-                <select name="manager">
-                    <option selected value="s1">Іван</option>
-                    <option value="s2">Степан</option>
-                    <option value="s3">Макс</option>
-                    <option value="s4">Толя</option>
+            <form onSubmit={onSubmitHandler} {...manager}>
+                <select value='0'>
+                    <option >Оберіть менеджера</option>
+                    {
+                        managers && managers.map(manager => <option key={manager.id} value={manager.id}>{manager.first_name} {manager.surname}</option>)
+                    }
                 </select>
                 <select name="car">
                     <option selected value="s1">BMV</option>
