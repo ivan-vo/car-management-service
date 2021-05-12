@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 public class CarManagementContex : DbContext
 {
-    public DbSet<Deal> deal { get; set; }
+    public DbSet<Deal> deals { get; set; }
     public DbSet<Car> cars { get; set; }
     public DbSet<Manager> managers { get; set; }
 
@@ -16,7 +16,7 @@ public class Deal
     public int id { get; set; }
     public DateTime? name { get; set; }
     public Car car_ { get; set; }
-    public Manager manager_ { get; set; }
+    public Deal manager_ { get; set; }
 }
 
 public class Car

@@ -9,10 +9,10 @@ namespace managementAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CarController : ControllerBase
+    public class CarManagementController : ControllerBase
     {
         private CarManagementService service;
-        public CarController(CarManagementService service)
+        public CarManagementController(CarManagementService service)
         {
             this.service = service;
         }
@@ -22,6 +22,19 @@ namespace managementAPI.Controllers
         {
             Car newCar = service.CreateNewCar(car);
             return Created($"/cars/{newCar.id}", newCar);
+        }
+
+        [HttpPost("/managers")]
+        public ActionResult<IEnumerable<Manager>> CreateManager(Manager manager)
+        {
+            Manager newManager = service.CreateNewManager(manager);
+            return Created($"/cars/{newManager.id}", newManager);
+        }
+        [HttpPost("/deals")]
+        public ActionResult<IEnumerable<Deal>> CreateDeal(Deal deal)
+        {
+            Deal newDeal = service.CreateNewDeal(deal);
+            return Created($"/cars/{newDeal.id}", newDeal);
         }
     }
 }

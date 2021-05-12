@@ -21,5 +21,17 @@ namespace managementAPI
             _context.SaveChanges();
             return car;
         }
+        public Manager CreateNewManager(Manager manager)
+        {
+            _context.managers.Add(manager);
+            _context.SaveChanges();
+            return manager;
+        }
+        public Deal CreateNewDeal(Deal deal)
+        {
+            _context.deals.Add(deal);
+            _context.SaveChanges();
+            return deal;
+        }
     }
 }
