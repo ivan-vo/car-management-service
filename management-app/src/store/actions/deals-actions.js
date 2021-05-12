@@ -5,6 +5,8 @@ export const loadManagers = () => async (dispatch) => {
         .then(res => res.json())
         .then(managers => dispatch({
             type: MANAGERS_LOADED,
-            payload: managers
+            payload: {
+                managers
+            }
         }))
 }

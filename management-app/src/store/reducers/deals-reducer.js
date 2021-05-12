@@ -4,7 +4,9 @@ import { MANAGERS_LOADED } from '../actions/deals-actions'
 function managersReducer(state = {}, action) {
     switch (action.type) {
         case MANAGERS_LOADED:
-            return { ...action.payload.managers }
+            return {
+                ...action.payload.managers 
+            }
         default:
             return state;
     }

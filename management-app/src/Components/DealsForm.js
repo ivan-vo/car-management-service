@@ -22,6 +22,7 @@ export default function DealsForm() {
     }, [])
     const dispatch = useDispatch();
     const managers = useSelector(state => state.managers);
+    console.log(managers);
     const date = useTextField("","date");
     return (
         <div>
