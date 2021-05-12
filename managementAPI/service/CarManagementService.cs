@@ -14,6 +14,11 @@ namespace ManagementAPI
         public CarManagementService ( CarManagementContex context) 
         {
             this._context = context;
-        }   
+        }
+
+        internal int GetONE()
+        {
+            return 1;
+        }
     }
 }
