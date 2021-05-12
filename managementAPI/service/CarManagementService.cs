@@ -32,6 +32,10 @@ namespace managementAPI
         {
             return _context.managers.ToList();
         }
+        public List<Car> GetCars()
+        {
+            return _context.cars.ToList();
+        }
 
         public Deal CreateNewDeal(Deal deal)
         {

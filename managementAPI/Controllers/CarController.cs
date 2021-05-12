@@ -22,6 +22,11 @@ namespace managementAPI.Controllers
         {
             return Ok(service.GetMagers());
         }
+        [HttpGet("/cars")]
+        public ActionResult<IEnumerable<Manager>> GetCars()
+        {
+            return Ok(service.GetCars());
+        }
 
         [HttpPost("/cars")]
         public ActionResult<IEnumerable<Car>> CreateCar(Car car)
