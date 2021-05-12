@@ -14,9 +14,9 @@ public class CarManagementContex : DbContext
 public class Deal
 {
     public int id { get; set; }
-    public DateTime? name { get; set; }
+    public DateTime? date { get; set; }
     public Car car_ { get; set; }
-    public Deal manager_ { get; set; }
+    public Manager manager_ { get; set; }
 }
 
 public class Car
