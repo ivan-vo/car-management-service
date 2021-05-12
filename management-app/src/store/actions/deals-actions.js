@@ -1,12 +1,13 @@
 export const MANAGERS_LOADED = 'managers/loaded';
+export const CARS_LOADED = 'cars/loaded';
 
 export const loadManagers = () => async (dispatch) => {
-    fetch('http://localhost:5000/managers')
+    fetch('http://localhost:5000/carrs')
         .then(res => res.json())
-        .then(managers => dispatch({
+        .then(cars => dispatch({
             type: MANAGERS_LOADED,
             payload: {
-                managers
+                cars
             }
         }))
 }
