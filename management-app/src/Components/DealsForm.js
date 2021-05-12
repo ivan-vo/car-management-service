@@ -1,5 +1,8 @@
 import React from 'react'
+import { useEffect } from 'react';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadManagers } from '../store/actions/deals-actions';
 
 export default function DealsForm() {
     const onSubmitHandler = (event) => {
@@ -12,10 +15,13 @@ export default function DealsForm() {
             value,
             name: name,
             onChange: (event) => setValue(event.target.value),
-            reset: (value) => setValue(value)
         }
     }
-
+    useEffect(() => {
+        dispatch(loadManagers())
+    }, [])
+    const dispatch = useDispatch();
+    const managers = useSelector(state => state.managers);
     const date = useTextField("","date");
     return (
         <div>
