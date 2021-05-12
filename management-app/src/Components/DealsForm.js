@@ -2,7 +2,8 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadManagers } from '../store/actions/deals-actions';
+import { loadCars, loadManagers } from '../store/actions/deals-actions';
+import store from '../store/store';
 
 export default function DealsForm() {
     const onSubmitHandler = (event) => {
@@ -20,10 +21,12 @@ export default function DealsForm() {
     }
     useEffect(() => {
         dispatch(loadManagers())
+        dispatch(loadCars())
     }, [])
     const dispatch = useDispatch();
-    const managers = useSelector(state => state.managers.managers);
-    console.log(managers);
+    const managers = useSelector(state => state.tables.managers);
+    const cars = useSelector(state => state.tables.cars);
+    console.log(store.getState());
     const date = useTextField("","date");
     const manager = useTextField("", "manager")
     return (
@@ -36,10 +39,10 @@ export default function DealsForm() {
                     }
                 </select>
                 <select name="car">
-                    <option selected value="s1">BMV</option>
-                    <option value="s2">Nissan</option>
-                    <option value="s3">Mersedes</option>
-                    <option value="s4">Opel</option>
+                    <option selected value="s1">Оберіть продану машину</option>
+                    {
+                        cars && cars.map(car => <option key={car.id} value={car.id}>{car.brand} {car.model} {car.color}</option>)
+                    }
                 </select>
                 <input {...date} type="date" placeholder="2021, 2, 20" />
                 <button type="submit">Add new deal</button>

@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import managersReducers from './reducers/deals-reducer'
 
 export const rootReducer = combineReducers({
-    managers: managersReducers,
+    tables: managersReducers,
 })
 
 const store = createStore(
