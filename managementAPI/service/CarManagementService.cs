@@ -37,8 +37,10 @@ namespace managementAPI
             return _context.cars.ToList();
         }
 
-        public Deal CreateNewDeal(Deal deal)
+        public Deal CreateNewDeal(Deal deal, Manager manager, Car car)
         {
+            deal.car_ = car;
+            deal.manager_ = manager;
             _context.deals.Add(deal);
             _context.SaveChanges();
             return deal;

@@ -42,9 +42,9 @@ namespace managementAPI.Controllers
             return Created($"/cars/{newManager.id}", newManager);
         }
         [HttpPost("/deals")]
-        public ActionResult<IEnumerable<Deal>> CreateDeal(Deal deal)
+        public ActionResult<IEnumerable<Deal>> CreateDeal(Deal deal, Manager manager, Car car)
         {
-            Deal newDeal = service.CreateNewDeal(deal);
+            Deal newDeal = service.CreateNewDeal(deal, manager, car);
             return Created($"/cars/{newDeal.id}", newDeal);
         }
     }
