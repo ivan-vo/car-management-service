@@ -1,5 +1,6 @@
 export const MANAGERS_LOADED = 'managers/loaded';
-export const CARS_LOADED = 'cars/loaded'
+export const CARS_LOADED = 'cars/loaded';
+export const DEAL_CREATED = 'deal/created';
 
 export const loadManagers = () => async (dispatch) => {
     fetch('http://localhost:5000/managers')
@@ -20,4 +21,13 @@ export const loadCars = () => async (dispatch) => {
                 cars
             }
         }))
+}
+export const createDeal = (date, manager, car) => dispatch => {
+    fetch(`http://localhost:5000/deals`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(date, manager, car)
+    })
 }

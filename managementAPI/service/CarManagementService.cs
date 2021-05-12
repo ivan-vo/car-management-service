@@ -11,7 +11,7 @@ namespace managementAPI
     {
         private CarManagementContex _context;
 
-        public CarManagementService ( CarManagementContex context) 
+        public CarManagementService(CarManagementContex context)
         {
             this._context = context;
         }
@@ -37,10 +37,9 @@ namespace managementAPI
             return _context.cars.ToList();
         }
 
-        public Deal CreateNewDeal(Deal deal, Manager manager, Car car)
+        public Deal CreateNewDeal(DateTime date, Manager manager, Car car)
         {
-            deal.car_ = car;
-            deal.manager_ = manager;
+            Deal deal = new Deal() { date = date, car_ = car, manager_ = manager };
             _context.deals.Add(deal);
             _context.SaveChanges();
             return deal;
