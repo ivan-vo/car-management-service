@@ -5,7 +5,7 @@ export default function Dashboard() {
     return (
         <nav>
             <ul>
-                <li><NavLink to="/cars">Cars</NavLink>  </li>
+                <li><NavLink to="/deals/created">Добавити продаж</NavLink>  </li>
                 <li><NavLink to="/menegers">Menegers</NavLink> </li>
             </ul>
         </nav>
