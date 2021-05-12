@@ -27,6 +27,12 @@ namespace managementAPI
             _context.SaveChanges();
             return manager;
         }
+
+        public List<Manager> GetMagers()
+        {
+            return _context.managers.ToList();
+        }
+
         public Deal CreateNewDeal(Deal deal)
         {
             _context.deals.Add(deal);

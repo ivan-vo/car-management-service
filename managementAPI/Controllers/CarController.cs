@@ -17,6 +17,12 @@ namespace managementAPI.Controllers
             this.service = service;
         }
 
+        [HttpGet("/managers")]
+        public ActionResult<IEnumerable<Manager>> GetManagers()
+        {
+            return Ok(service.GetMagers());
+        }
+
         [HttpPost("/cars")]
         public ActionResult<IEnumerable<Car>> CreateCar(Car car)
         {
