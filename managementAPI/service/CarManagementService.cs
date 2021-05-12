@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 
-namespace ManagementAPI
+namespace managementAPI
 {
     public class CarManagementService
     {
@@ -16,9 +16,15 @@ namespace ManagementAPI
             this._context = context;
         }
 
-        internal int GetONE()
+        public int GetONE()
         {
             return 1;
+        }
+
+        public void CreateNewCar(Car car)
+        {
+            _context.Add(car);
+            _context.SaveChanges();
         }
     }
 }

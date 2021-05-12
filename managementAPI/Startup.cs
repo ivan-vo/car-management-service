@@ -13,7 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
-namespace ManagementAPI
+namespace managementAPI
 {
     public class Startup
     {
@@ -32,7 +32,6 @@ namespace ManagementAPI
                     .UseNpgsql(Configuration.GetConnectionString("DefaultConnection"))
                     .UseSnakeCaseNamingConvention()
             );
-            services.AddScoped<CarManagementContex>();
 
             services.AddCors(options =>
             {
@@ -47,6 +46,7 @@ namespace ManagementAPI
             services.AddControllers();
                 // .AddNewtonsoftJson(options =>
                 // options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+            services.AddScoped<CarManagementService>();
                 
             services.AddSwaggerGen(c =>
             {
