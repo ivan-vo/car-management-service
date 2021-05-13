@@ -8,9 +8,9 @@ import store from '../store/store';
 export default function DealsForm() {
     const onSubmitHandler = (event) => {
         event.preventDefault();
-        console.log(manager.value);
-        console.log(car.value);
-        console.log(date.value);
+        // console.log(manager.value);
+        // console.log(car.value);
+        // console.log(date.value);
         dispatch(createDeal(date.value,manager.value,car.value))
     }
 
@@ -35,6 +35,7 @@ export default function DealsForm() {
     const car = useTextField("", "car")
     return (
         <div>
+            <h1>Реєстрація продажу</h1>
             <form onSubmit={onSubmitHandler} {...manager}>
                 <select value='0' {...manager}>
                     {

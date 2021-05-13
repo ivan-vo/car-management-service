@@ -4,7 +4,7 @@ import { CARS_LOADED, MANAGERS_LOADED } from '../actions/deals-actions'
 function managersReducer(state = [], action) {
     switch (action.type) {
         case MANAGERS_LOADED:
-            return [ ...action.payload.managers] 
+            return action.payload
         default:
             return state;
     }
@@ -12,7 +12,7 @@ function managersReducer(state = [], action) {
 function carsReducer(state = [], action) {
     switch (action.type) {
         case CARS_LOADED:
-            return [ ...action.payload.cars] 
+            return action.payload
         default:
             return state;
     }

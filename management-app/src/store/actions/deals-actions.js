@@ -7,9 +7,7 @@ export const loadManagers = () => async (dispatch) => {
         .then(res => res.json())
         .then(managers => dispatch({
             type: MANAGERS_LOADED,
-            payload: {
-                managers
-            }
+            payload: managers
         }))
 }
 export const loadCars = () => async (dispatch) => {
@@ -17,9 +15,7 @@ export const loadCars = () => async (dispatch) => {
         .then(res => res.json())
         .then(cars => dispatch({
             type: CARS_LOADED,
-            payload: {
-                cars
-            }
+            payload: cars
         }))
 }
 export const createDeal = (date, manager, car) => dispatch => {

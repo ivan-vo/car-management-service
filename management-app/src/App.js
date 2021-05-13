@@ -10,7 +10,6 @@ function App() {
         <Dashboard />
         <Switch>
           <Route path="/deals/created">
-            <h1>Create Deals</h1>
             <DealsForm/>
           </Route>
           <Route path="/menegers">
