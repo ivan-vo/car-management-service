@@ -38,7 +38,7 @@ export default function DealsForm() {
         <div>
             <h1>Реєстрація продажу</h1>
             <form onSubmit={onSubmitHandler}>
-                <select >
+                <select { ...selectedManager }>
                 <option>-- Оберіть менеджера</option>
                     {
                         managers && managers.map(manager => 
