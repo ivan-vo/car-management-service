@@ -44,7 +44,10 @@ namespace managementAPI.Controllers
         [HttpPost("/deals")]
         public ActionResult<IEnumerable<Deal>> CreateDeal(DealDateManagerCatrDTO dto)
         {
-            Console.WriteLine(dto.date);
+            // Console.WriteLine(dto.carId);
+            // Console.WriteLine(dto.date);
+            // Console.WriteLine(dto.managerId);
+
             Deal newDeal = service.CreateNewDeal(dto.date, dto.managerId, dto.carId);
             return Created($"/cars/{newDeal.id}", newDeal);
         }

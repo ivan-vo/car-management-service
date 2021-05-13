@@ -26,6 +26,7 @@ public class Car
     public string model { get; set; }
     public string color { get; set; }
     public decimal price { get; set; }
+    public List <Deal> deal { get; set; }
 }
 public class Manager
 {
@@ -36,4 +37,5 @@ public class Manager
     public DateTime date_recruitment { get; set; }
     public int sales { get; set; }
     public decimal salary { get; set; }
+    public List<Deal> deals { get; set; }
 }

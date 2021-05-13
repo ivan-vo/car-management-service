@@ -28,6 +28,6 @@ export const createDeal = (date, manager, car) => dispatch => {
         headers: {
             'Content-Type': 'application/json;charset=utf-8'
         },
-        body: JSON.stringify({date, manager: manager, car: car})
+        body: JSON.stringify({date, managerId: manager, carId: car})
     })
 }

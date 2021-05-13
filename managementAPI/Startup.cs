@@ -13,6 +13,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
+using Microsoft.AspNetCore.Http;
+
 namespace managementAPI
 {
     public class Startup
@@ -43,9 +45,9 @@ namespace managementAPI
                 });
             });
 
-            services.AddControllers();
-                // .AddNewtonsoftJson(options =>
-                // options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+            services.AddControllers()
+                .AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddScoped<CarManagementService>();
                 
             services.AddSwaggerGen(c =>

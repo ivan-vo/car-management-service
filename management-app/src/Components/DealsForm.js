@@ -8,10 +8,10 @@ import store from '../store/store';
 export default function DealsForm() {
     const onSubmitHandler = (event) => {
         event.preventDefault();
-        dispatch(createDeal(date.value,manager.value,car.value))
         console.log(manager.value);
         console.log(car.value);
         console.log(date.value);
+        dispatch(createDeal(date.value,manager.value,car.value))
     }
 
     function useTextField(init, name) {
