@@ -4,12 +4,13 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchManagers } from '../store/managerTollkit';
 import { fetchCars } from '../store/carToolkit';
+import { fetchCreateDeal } from '../store/dealToolkit';
 import store from '../store/store';
 
 export default function DealsForm() {
     const onSubmitHandler = (event) => {
         event.preventDefault();
-        // dispatch(createDeal(date.value,manager.value,car.value))
+        dispatch(fetchCreateDeal(date.value,manager.value,car.value))
     }
 
     function useTextField(init, name) {
@@ -29,8 +30,8 @@ export default function DealsForm() {
     const cars = useSelector(state => state.cars);
     console.log(store.getState());
     const date = useTextField("","date");
-    const manager = useTextField("", "manager")
-    const car = useTextField("", "car")
+    const manager = useTextField(1, "manager")
+    const car = useTextField(1, "car")
     return (
         <div>
             <h1>Реєстрація продажу</h1>
