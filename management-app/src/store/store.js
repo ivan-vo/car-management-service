@@ -1,22 +1,23 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 
-import { combineReducers, createStore, applyMiddleware, compose } from 'redux'
-import thunk from 'redux-thunk';
-
-import { managersReducer,carsReducer } from './reducers/deals-reducer';
+import { managersReducer } from './managerTollkit';
+import { carsReducer } from './carToolkit';
 
 const ext = window.__REDUX_DEVTOOLS_EXTENSION__;
 
-const devtoolMiddleware = 
+const devtoolMiddleware =
   ext && process.env.NODE_ENV === 'development' ? ext() : f => f;
 
-export const rootReducer = combineReducers({
-    managers: managersReducer,
-    cars: carsReducer
+const middleware = getDefaultMiddleware({
+  thunk: true,
+  devtoolMiddleware
 })
 
-const store = createStore(
-    rootReducer,
-    compose(applyMiddleware(thunk),devtoolMiddleware)
-    )
+const store = configureStore({
+  reducer: {
+    managers: managersReducer,
+    cars: carsReducer
+  },
+  middleware
+})
 export default store

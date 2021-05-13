@@ -2,16 +2,14 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createDeal, loadCars, loadManagers } from '../store/actions/deals-actions';
+import { fetchManagers } from '../store/managerTollkit';
+import { fetchCars } from '../store/carToolkit';
 import store from '../store/store';
 
 export default function DealsForm() {
     const onSubmitHandler = (event) => {
         event.preventDefault();
-        // console.log(manager.value);
-        // console.log(car.value);
-        // console.log(date.value);
-        dispatch(createDeal(date.value,manager.value,car.value))
+        // dispatch(createDeal(date.value,manager.value,car.value))
     }
 
     function useTextField(init, name) {
@@ -23,8 +21,8 @@ export default function DealsForm() {
         }
     }
     useEffect(() => {
-        dispatch(loadManagers())
-        dispatch(loadCars())
+        dispatch(fetchManagers())
+        dispatch(fetchCars())
     }, [])
     const dispatch = useDispatch();
     const managers = useSelector(state => state.managers);
