@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace managementAPI.Migrations
 {
-    [DbContext(typeof(CarManagementContex))]
+    [DbContext(typeof(ManagementContex))]
     partial class CarManagementContexModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

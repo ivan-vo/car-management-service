@@ -8,7 +8,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace managementAPI.Migrations
 {
-    [DbContext(typeof(CarManagementContex))]
+    [DbContext(typeof(ManagementContex))]
     [Migration("20210511151625_renemeColumnInDeal.v.1.1")]
     partial class renemeColumnInDealv11
     {

@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-public class CarManagementContex : DbContext
+public class ManagementContex : DbContext
 {
     public DbSet<Deal> deals { get; set; }
     public DbSet<Car> cars { get; set; }
     public DbSet<Manager> managers { get; set; }
 
-    public CarManagementContex(DbContextOptions<CarManagementContex> options) : base(options) { }
+    public ManagementContex(DbContextOptions<ManagementContex> options) : base(options) { }
 }
 
 public class Deal

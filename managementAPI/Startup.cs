@@ -29,7 +29,7 @@ namespace managementAPI
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<CarManagementContex>(options =>
+            services.AddDbContext<ManagementContex>(options =>
                 options
                     .UseNpgsql(Configuration.GetConnectionString("DefaultConnection"))
                     .UseSnakeCaseNamingConvention()
@@ -49,6 +49,8 @@ namespace managementAPI
                 .AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddScoped<CarManagementService>();
+            services.AddScoped<DealManagementService>();
+            services.AddScoped<ManagerManagementService>();
                 
             services.AddSwaggerGen(c =>
             {

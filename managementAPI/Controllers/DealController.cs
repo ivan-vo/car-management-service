@@ -7,8 +7,8 @@ namespace managementAPI.Controllers
     [ApiController]
     public class DealManagementController : ControllerBase
     {
-        private CarManagementService service;
-        public DealManagementController(CarManagementService service)
+        private DealManagementService service;
+        public DealManagementController(DealManagementService service)
         {
             this.service = service;
         }

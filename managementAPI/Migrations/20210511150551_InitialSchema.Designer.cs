@@ -8,7 +8,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace managementAPI.Migrations
 {
-    [DbContext(typeof(CarManagementContex))]
+    [DbContext(typeof(ManagementContex))]
     [Migration("20210511150551_InitialSchema")]
     partial class InitialSchema
     {

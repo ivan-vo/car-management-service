@@ -8,7 +8,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace managementAPI.Migrations
 {
-    [DbContext(typeof(CarManagementContex))]
+    [DbContext(typeof(ManagementContex))]
     [Migration("20210513070218_newLinkInTables")]
     partial class newLinkInTables
     {

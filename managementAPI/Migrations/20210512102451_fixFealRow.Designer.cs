@@ -8,7 +8,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace managementAPI.Migrations
 {
-    [DbContext(typeof(CarManagementContex))]
+    [DbContext(typeof(ManagementContex))]
     [Migration("20210512102451_fixFealRow")]
     partial class fixFealRow
     {

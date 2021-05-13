@@ -7,8 +7,8 @@ namespace managementAPI.Controllers
     [ApiController]
     public class ManagerManagementController : ControllerBase
     {
-        private CarManagementService service;
-        public ManagerManagementController(CarManagementService service)
+        private ManagerManagementService service;
+        public ManagerManagementController(ManagerManagementService service)
         {
             this.service = service;
         }
