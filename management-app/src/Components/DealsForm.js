@@ -5,12 +5,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchManagers } from '../store/managerTollkit';
 import { fetchCars } from '../store/carToolkit';
 import { fetchCreateDeal } from '../store/dealToolkit';
-import store from '../store/store';
 
 export default function DealsForm() {
     const onSubmitHandler = (event) => {
         event.preventDefault();
-        dispatch(fetchCreateDeal(date.value,manager.value,car.value))
+        dispatch(fetchCreateDeal(date.value,selectedManager.value,slectedCar.value))
     }
 
     function useTextField(init, name) {
@@ -21,22 +20,26 @@ export default function DealsForm() {
             onChange: (event) => setValue(event.target.value),
         }
     }
+    const dispatch = useDispatch();
+
     useEffect(() => {
         dispatch(fetchManagers())
         dispatch(fetchCars())
     }, [])
-    const dispatch = useDispatch();
+
     const managers = useSelector(state => state.managers);
     const cars = useSelector(state => state.cars);
-    console.log(store.getState());
+
+    const selectedManager = useTextField("", "manager")
+    const slectedCar = useTextField("", "car")
+
     const date = useTextField("","date");
-    const manager = useTextField(1, "manager")
-    const car = useTextField(1, "car")
     return (
         <div>
             <h1>Реєстрація продажу</h1>
-            <form onSubmit={onSubmitHandler} {...manager}>
-                <select value='0' {...manager}>
+            <form onSubmit={onSubmitHandler}>
+                <select >
+                <option>-- Оберіть менеджера</option>
                     {
                         managers && managers.map(manager => 
                         <option key={manager.id} value={manager.id}>
@@ -45,9 +48,13 @@ export default function DealsForm() {
                         )
                     }
                 </select>
-                <select name="car" {...car}>
+                <select {...slectedCar}>
+                <option>-- Оберіть авто</option>
                     {
-                        cars && cars.map(car => <option key={car.id} value={car.id}>{car.brand} {car.model} {car.color}</option>)
+                        cars && cars.map(car => 
+                        <option key={car.id} value={car.id}>
+                            {car.brand} {car.model} [{car.color}]
+                        </option>)
                     }
                 </select>
                 <input {...date} type="date" placeholder="2021, 2, 20" />

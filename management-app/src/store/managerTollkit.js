@@ -7,7 +7,7 @@ const initialState = [];
 
 export const loadManagers = createAction(MANAGERS_LOADED);
 
-export const managersReducer = createReducer(initialState, {
+export const managerReducer = createReducer(initialState, {
     [loadManagers] : (state, action) => (
         state = action.payload
     )

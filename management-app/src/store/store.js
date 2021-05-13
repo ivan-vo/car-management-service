@@ -1,6 +1,6 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 
-import { managersReducer } from './managerTollkit';
+import { managerReducer } from './managerTollkit';
 import { carsReducer } from './carToolkit';
 
 const ext = window.__REDUX_DEVTOOLS_EXTENSION__;
@@ -15,7 +15,7 @@ const middleware = getDefaultMiddleware({
 
 const store = configureStore({
   reducer: {
-    managers: managersReducer,
+    managers: managerReducer,
     cars: carsReducer
   },
   middleware
