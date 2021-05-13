@@ -27,8 +27,8 @@ export default function DealsForm() {
         dispatch(loadCars())
     }, [])
     const dispatch = useDispatch();
-    const managers = useSelector(state => state.tables.managers);
-    const cars = useSelector(state => state.tables.cars);
+    const managers = useSelector(state => state.managers);
+    const cars = useSelector(state => state.cars);
     console.log(store.getState());
     const date = useTextField("","date");
     const manager = useTextField("", "manager")

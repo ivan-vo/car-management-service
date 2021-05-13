@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import { CARS_LOADED, MANAGERS_LOADED } from '../actions/deals-actions'
 
-function managersReducer(state = [], action) {
+export function managersReducer(state = [], action) {
     switch (action.type) {
         case MANAGERS_LOADED:
             return action.payload
@@ -9,7 +9,7 @@ function managersReducer(state = [], action) {
             return state;
     }
 }
-function carsReducer(state = [], action) {
+export function carsReducer(state = [], action) {
     switch (action.type) {
         case CARS_LOADED:
             return action.payload
@@ -17,8 +17,3 @@ function carsReducer(state = [], action) {
             return state;
     }
 }
-
-export default combineReducers({
-    managers: managersReducer,
-    cars: carsReducer
-})
