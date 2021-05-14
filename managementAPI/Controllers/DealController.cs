@@ -19,5 +19,10 @@ namespace managementAPI.Controllers
             Deal newDeal = service.CreateNewDeal(dto.date, dto.managerId, dto.carId);
             return Created($"/cars/{newDeal.id}", newDeal);
         }
+        [HttpGet("/managers/top-manager")]
+        public ActionResult<TopManagerDTO> GetTopManager()
+        {
+            return Ok(service.GetTopManager());
+        }
     }
 }
