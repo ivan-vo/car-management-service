@@ -1,15 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchTopManager } from '../store/dealToolkit';
 
 export default function TopManager() {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(fetchTopManager())
+    }, [])
+    const count = useSelector(state => state.deal.countDeals)
+    const topManager = useSelector(state => state.deal.topManager)
     return (
         <div>
             <h1>Топ менеджер</h1>
             <p>
-                <span>Voronov Ivan Anatoliyovush</span>
+                <span>{topManager.first_name} {topManager.surname} {topManager.last_name}</span>
                 <br/>
-                <span>За період кількість угод (12) за період (від - до) </span>
+                <span> [{count}] угод  за весь час </span>
                 <br/>
-                <span>з/п Івана - 35 000 + (4 000грн бонуси)</span>
+                <span>з/п {topManager.salary} -  + (4 000грн бонуси)</span>
                 <br/>
             </p>
         </div>
