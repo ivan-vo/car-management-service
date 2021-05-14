@@ -9,13 +9,9 @@ export function fetchCars() {
 }
 const carsSlice = createSlice({
     name:'carsSlice',
-    initialState:{
-        carsList:[]
-    },
+    initialState:[],
     reducers:{
-        loadCars(state,action){
-            state.carsList = action.payload
-        }
+        loadCars: (state,action) => action.payload,
     }
 })
 export default carsSlice.reducer;

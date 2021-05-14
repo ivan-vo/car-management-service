@@ -43,8 +43,8 @@ export default function DealsForm() {
         event.preventDefault();
         checkFields() && sendForm();
     }
-    const managers = useSelector(state => state.managers.managersList);
-    const cars = useSelector(state => state.cars.carsList);
+    const managers = useSelector(state => state.managers);
+    const cars = useSelector(state => state.cars);
 
     const selectedManager = useTextField(0, "manager")
     const slectedCar = useTextField(0, "car")

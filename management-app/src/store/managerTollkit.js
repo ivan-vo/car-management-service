@@ -10,13 +10,9 @@ export function fetchManagers() {
 
 const toolkitManagersSlice = createSlice({
     name: 'managers',
-    initialState: {
-        managersList : []
-    },
+    initialState: [],
     reducers: {
-        loadManagers(state,action) {
-            state.managersList = action.payload;
-        }
+        loadManagers: (state, action) => action.payload,
     }
 })
 export default toolkitManagersSlice.reducer;
