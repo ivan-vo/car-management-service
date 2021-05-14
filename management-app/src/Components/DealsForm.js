@@ -9,7 +9,7 @@ import { fetchCreateDeal } from '../store/dealToolkit';
 export default function DealsForm() {
     const onSubmitHandler = (event) => {
         event.preventDefault();
-        dispatch(fetchCreateDeal(date.value,selectedManager.value,slectedCar.value))
+        date.value && selectedManager.value && slectedCar.value && dispatch(fetchCreateDeal(date.value,selectedManager.value,slectedCar.value))
     }
 
     function useTextField(init, name) {
@@ -30,10 +30,10 @@ export default function DealsForm() {
     const managers = useSelector(state => state.managers);
     const cars = useSelector(state => state.cars);
 
-    const selectedManager = useTextField("", "manager")
-    const slectedCar = useTextField("", "car")
+    const selectedManager = useTextField(0, "manager")
+    const slectedCar = useTextField(0, "car")
+    const date = useTextField(0,"date");
 
-    const date = useTextField("","date");
     return (
         <div>
             <h1>Реєстрація продажу</h1>
