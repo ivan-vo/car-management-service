@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Dashboard from './Components/Dashboard';
 import DealsForm from './Components/DealsForm';
+import TopManager from './Components/TopManager';
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
             <DealsForm/>
           </Route>
           <Route path="/menegers">
-            <h1>Menegers</h1>
+            <TopManager/>
           </Route>
         </Switch>
       </Router>

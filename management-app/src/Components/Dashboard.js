@@ -6,7 +6,7 @@ export default function Dashboard() {
         <nav>
             <ul>
                 <li><NavLink to="/deals/created">Зареєструвати продаж</NavLink>  </li>
-                <li><NavLink to="/menegers">Menegers</NavLink> </li>
+                <li><NavLink to="/menegers">Топ-менеджер</NavLink> </li>
             </ul>
         </nav>
     )
