@@ -24,9 +24,11 @@ export default function DealsForm() {
     }
     function checkFields() {
         if(date.value != 0 && selectedManager.value != 0 && slectedCar.value != 0){
+            setErrorText("")
             return true;
         }
         else{
+            setErrorText("Заповніть всі поля!")
             return false;
         }
     }
@@ -52,9 +54,12 @@ export default function DealsForm() {
 
     const form = useForm(selectedManager,slectedCar,date);
 
+    const [ errorText, setErrorText ] = useState('');
+
     return (
         <div>
             <h1>Реєстрація продажу</h1>
+            <span>{errorText}</span>
             <form onSubmit={onSubmitHandler}>
                 <select { ...selectedManager }>
                 <option value={0}>-- Оберіть менеджера</option>
