@@ -1,17 +1,5 @@
-import { createAction, createReducer } from '@reduxjs/toolkit';
 import axios from 'axios';
-
-export const MANAGERS_LOADED = 'managers/loaded';
-
-const initialState = [];
-
-export const loadManagers = createAction(MANAGERS_LOADED);
-
-export const managerReducer = createReducer(initialState, {
-    [loadManagers] : (state, action) => (
-        state = action.payload
-    )
-})
+import { createSlice } from "@reduxjs/toolkit";
 
 export function fetchManagers() {
     return (dispatch) => {
@@ -19,3 +7,17 @@ export function fetchManagers() {
         .then(res => {dispatch(loadManagers(res.data))})
     }
 }
+
+const toolkitManagersSlice = createSlice({
+    name: 'managers',
+    initialState: {
+        managersList : []
+    },
+    reducers: {
+        loadManagers(state,action) {
+            state.managersList = action.payload;
+        }
+    }
+})
+export default toolkitManagersSlice.reducer;
+export const { loadManagers } = toolkitManagersSlice.actions;

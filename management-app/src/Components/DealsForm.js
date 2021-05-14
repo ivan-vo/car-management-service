@@ -9,7 +9,7 @@ import { fetchCreateDeal } from '../store/dealToolkit';
 export default function DealsForm() {
     const onSubmitHandler = (event) => {
         event.preventDefault();
-        date.value && selectedManager.value && slectedCar.value && dispatch(fetchCreateDeal(date.value,selectedManager.value,slectedCar.value))
+        date.value && selectedManager.value && slectedCar.value && fetchCreateDeal(date.value,selectedManager.value,slectedCar.value)
     }
 
     function useTextField(init, name) {
@@ -27,7 +27,7 @@ export default function DealsForm() {
         dispatch(fetchCars())
     }, [])
 
-    const managers = useSelector(state => state.managers);
+    const managers = useSelector(state => state.managers.managersList);
     const cars = useSelector(state => state.cars);
 
     const selectedManager = useTextField(0, "manager")
