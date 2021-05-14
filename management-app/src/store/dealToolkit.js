@@ -9,10 +9,10 @@ export const createDeal = (date, manager, car) => dispatch => {
         body: JSON.stringify({date, managerId: manager, carId: car})
     })
 }
-export const fetchCreateDeal = (date, manager, car) => dispatch => {
+export const fetchCreateDeal = (values) => dispatch => {
     axios.post('http://localhost:5000/deals',{
-        date,
-        managerId: manager,
-        carId: car
+        date: values.date,
+        managerId: values.manager,
+        carId: values.car
     })    
 }
