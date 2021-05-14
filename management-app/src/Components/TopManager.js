@@ -7,8 +7,8 @@ export default function TopManager() {
     useEffect(() => {
         dispatch(fetchTopManager())
     }, [])
-    const count = useSelector(state => state.deal.countDeals)
-    const topManager = useSelector(state => state.deal.topManager)
+    const count = useSelector(state => state.topManagerData.countDeals)
+    const topManager = useSelector(state => state.topManagerData.topManager)
     return (
         <div>
             <h1>Топ менеджер</h1>

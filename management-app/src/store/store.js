@@ -19,7 +19,7 @@ const store = configureStore({
   reducer: {
     managers: managersReducer,
     cars: carsReducer,
-    deal: dealsReducer
+    topManagerData: dealsReducer
   },
   middleware
 })
