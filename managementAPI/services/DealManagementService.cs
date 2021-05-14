@@ -26,5 +26,30 @@ namespace managementAPI
             _context.SaveChanges();
             return deal;
         }
+        public List<ManagerDealsCountDTO> GetManagersDeals()
+        {
+            return(
+                from deal in _context.Set<Deal>()
+                join manager in _context.Set<Manager>()
+                    on deal.manager_.id equals manager.id
+                    group deal by deal.manager_.id into g
+                    select new ManagerDealsCountDTO(){managerId=g.Key, count=g.Count()}).ToList();
+        }
+        public TopManagerDTO GetTopManager()
+        {
+            List<ManagerDealsCountDTO> deals = GetManagersDeals();
+
+            int maxDealsMangerId = 0;
+            int count = 0;
+                foreach (var manager in deals)
+                {
+                    if (manager.count >= count)
+                    {
+                        maxDealsMangerId = manager.managerId;
+                        count = manager.count;
+                    }
+                }
+            return (new TopManagerDTO {topManager = managerService.GetManager(maxDealsMangerId), countDeals = count});
+        }
     }
 }
