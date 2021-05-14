@@ -1,7 +1,7 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 
-import  managersReducer  from './managerTollkit';
-import { carsReducer } from './carToolkit';
+import managersReducer  from './managerTollkit';
+import carsReducer from './carToolkit';
 
 const ext = window.__REDUX_DEVTOOLS_EXTENSION__;
 

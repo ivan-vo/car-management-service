@@ -28,7 +28,7 @@ export default function DealsForm() {
     }, [])
 
     const managers = useSelector(state => state.managers.managersList);
-    const cars = useSelector(state => state.cars);
+    const cars = useSelector(state => state.cars.carsList);
 
     const selectedManager = useTextField(0, "manager")
     const slectedCar = useTextField(0, "car")
